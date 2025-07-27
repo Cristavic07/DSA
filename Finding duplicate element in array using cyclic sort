@@ -1,0 +1,32 @@
+import java.util.Arrays;
+
+public class DuplicateArray {
+    public static void main(String[] args) {
+        int[] arr = {4, 2, 2, 1};
+        int duplicate = Duplicate(arr);
+        System.out.println("duplicate number is: " + duplicate);
+    }
+
+    static int Duplicate(int[] arr) {
+        int i = 0;
+        while (i < arr.length) {
+            if (arr[i] != i + 1) {
+                int correct = arr[i] - 1;
+                if (arr[i] != arr[correct]) {
+                    swap(arr, i, correct);
+                } else {
+                    return arr[i]; // Found duplicate
+                }
+            } else {
+                i++; // Only increment if no swap is needed
+            }
+        }
+        return -1; // No duplicate found
+    }
+
+    static void swap(int[] arr, int first, int second) {
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
+    }
+}
